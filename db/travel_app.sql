@@ -20,7 +20,7 @@ CREATE TABLE cities (
     id SERIAL PRIMARY KEY,
     country_id INT REFERENCES countries(id) ON DELETE CASCADE,
     name VARCHAR(255)
-)
+);
 
 CREATE TABLE trips (
     id SERIAL PRIMARY KEY,
@@ -29,5 +29,5 @@ CREATE TABLE trips (
     country_id INT REFERENCES countries(id) ON DELETE CASCADE,
     date INT,
     duration INT,
-    review TEXT,
-)
+    review TEXT
+);
