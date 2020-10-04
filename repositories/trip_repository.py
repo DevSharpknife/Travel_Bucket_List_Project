@@ -33,3 +33,11 @@ def select(id):
         trip = Trip(user, city, result['date'], result['duration'], result['review'], result['id'])
     return trip
 
+def delete_all():
+    sql = "DELETE FROM trips"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE * FROM trips WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
