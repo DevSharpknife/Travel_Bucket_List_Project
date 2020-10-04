@@ -7,3 +7,13 @@ def save(country):
     results= run_sql(sql, values)
     id = results[0]['id']
     country.id = id
+
+def select_all():
+    countries = []
+    sql = "SELECT * FROM countries"
+    results = run_sql(sql)
+    for row in results:
+        country = Country(row['name'], row['id'])
+        countries.append(country)
+    return countries
+
