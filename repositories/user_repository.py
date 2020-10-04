@@ -25,3 +25,6 @@ def select(id):
         user = User(result['name'], result['age'], result['id'])
     return user
 
+def delete_all():
+    sql = "DELETE FROM users"
+    run_sql(sql)
