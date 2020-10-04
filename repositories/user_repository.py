@@ -6,13 +6,22 @@ def save(user):
     values = [user.name, user.age]
     results = run_sql(sql, values)
     id = results[0]['id']
-    human.id = id
+    user.id = id
 
 def select_all():
     users = []
     sql = "SELECT * FROM users"
     results = run_sql(sql)
-    for result in results:
-        user = User(result['name'], result['age'])
+    for row in results:
+        user = User(row['name'], row['age'], row['id'])
         users.append(user)
     return users
+
+def select(id):
+    sql = "SELECT * FROM users WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        user = User(result['name'], result['age'], result['id'])
+    return user
+
