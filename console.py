@@ -2,8 +2,11 @@ import pdb
 
 from models.user import User
 from models.country import Country
+from models.city import City
 import repositories.user_repository as user_repository
 import repositories.country_repository as country_repository
+import repositories.city_repository as city_repository
+
 
 user_repository.delete_all()
 
@@ -22,7 +25,19 @@ country_repository.save(country_1)
 country_2 = Country('England')
 country_repository.save(country_2)
 
-country_3 = Country('Ireland')
+country_3 = Country('Northern Ireland')
 country_repository.save(country_3)
+
+city_1 = City('Belfast', country_3)
+city_repository.save(city_1)
+
+city_2 = City('London', country_2)
+city_repository.save(city_2)
+
+city_3 = City('Edinburgh', country_1)
+city_repository.save(city_3)
+
+city_4 = City('Glasgow', country_1)
+city_repository.save(city_4)
 
 pdb.set_trace()

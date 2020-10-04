@@ -18,16 +18,16 @@ CREATE TABLE countries (
 
 CREATE TABLE cities (
     id SERIAL PRIMARY KEY,
-    country_id INT REFERENCES countries(id) ON DELETE CASCADE,
-    name VARCHAR(255)
+    name VARCHAR(255),
+    country_id INT REFERENCES countries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE trips (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    city_id INT REFERENCES cities(id) ON DELETE CASCADE,
-    country_id INT REFERENCES countries(id) ON DELETE CASCADE,
     date INT,
     duration INT,
-    review TEXT
+    review TEXT,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    city_id INT REFERENCES cities(id) ON DELETE CASCADE,
+    country_id INT REFERENCES countries(id) ON DELETE CASCADE
 );
