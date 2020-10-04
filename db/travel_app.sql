@@ -24,10 +24,9 @@ CREATE TABLE cities (
 
 CREATE TABLE trips (
     id SERIAL PRIMARY KEY,
-    date INT,
-    duration INT,
-    review TEXT,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     city_id INT REFERENCES cities(id) ON DELETE CASCADE,
-    country_id INT REFERENCES countries(id) ON DELETE CASCADE
+    date INT,
+    duration INT,
+    review TEXT
 );
