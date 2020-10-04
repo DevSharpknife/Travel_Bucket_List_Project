@@ -23,4 +23,13 @@ def select_all():
         trips.append(trip)
     return trips
 
+def select(id):
+    sql = "SELECT * FROM trips WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        user = user_repository.select(result['user_id'])
+        city = city_repository.select(result['city_id'])
+        trip = Trip(user, city, result['date'], result['duration'], result['review'], result['id'])
+    return trip
 
