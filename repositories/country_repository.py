@@ -24,3 +24,12 @@ def select(id):
     if result is not None:
         country = Country(result['name'], result['id'])
     return country
+
+def delete_all():
+    sql = "DELETE FROM countries"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM countries WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
