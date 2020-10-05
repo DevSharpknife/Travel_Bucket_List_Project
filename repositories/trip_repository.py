@@ -6,8 +6,8 @@ import repositories.user_repository as user_repository
 import repositories.city_repository as city_repository
 
 def save(trip):
-    sql = "INSERT INTO trips ( user_id, city_id, date, duration, review ) VALUES ( %s, %s, %s, %s, %s ) RETURNING id"
-    values = [trip.user.id, trip.city.id, trip.date, trip.duration, trip.review]
+    sql = "INSERT INTO trips ( user_id, name, city_id, date, duration, review ) VALUES ( %s, %s, %s, %s, %s, %s ) RETURNING id"
+    values = [trip.user.id, trip.name, trip.city.id, trip.date, trip.duration, trip.review]
     results = run_sql(sql, values)
     id = results[0]['id']
     trip.id = id
@@ -19,7 +19,7 @@ def select_all():
     for row in results:
         user = user_repository.select(row['user_id'])
         city = city_repository.select(row['city_id'])
-        trip = Trip(user, city, row['date'], row['duration'], row['review'])
+        trip = Trip(user, name, city, row['date'], row['duration'], row['review'])
         trips.append(trip)
     return trips
 
@@ -30,7 +30,7 @@ def select(id):
     if result is not None:
         user = user_repository.select(result['user_id'])
         city = city_repository.select(result['city_id'])
-        trip = Trip(user, city, result['date'], result['duration'], result['review'], result['id'])
+        trip = Trip(user, name, city, result['date'], result['duration'], result['review'], result['id'])
     return trip
 
 def delete_all():

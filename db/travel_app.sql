@@ -26,6 +26,7 @@ CREATE TABLE trips (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     city_id INT REFERENCES cities(id) ON DELETE CASCADE,
+    name VARCHAR(255),
     date INT,
     duration INT,
     review TEXT

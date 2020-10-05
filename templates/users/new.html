@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>GREETINGS TRAVELLER!</h2>
+THIS IS WHERE YOU WILL MAKE A NEW USER
+<hr>
+<section>
+    <form action="/users" method="POST">
+        <label for="new_user_name">What is your name?</label>
+        <input type="text" name="new_user_name" id="new_user_name" placeholder="Enter Name Here">
+        <label for="new_user_age">How long have you been travelling?</label>
+        <input type="number" name="new_user_age" id="new_user_age" placeholder="Enter Age Here">
+        <input type="submit">
+    </form>
+    
+</section>
+
+{% endblock content %}

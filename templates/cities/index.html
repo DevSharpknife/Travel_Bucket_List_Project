@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    THIS IS WHERE THE CITY DATA WILL BE POPULATED
+
+{% for city in cities %}
+<section>
+    <p>{{ city.name }}</p>
+    <a href="/trips">Trips</a>
+    <a href="/countries">Countries</a>
+    <form action="/cities/{{ city.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+</section>
+<br>
+    
+{% endfor %}
+{% endblock content %}
