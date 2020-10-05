@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     THIS IS WHERE THE USER DATA WILL BE POPULATED
+
+{% for user in users %}
+<section>
+    <p>{{ user.name }}</p>
+    <a href="/users/{{ user.name }}/edit">Edit User</a>
+    <a href="/{{ user.name }}/trips">Your Trips</a>
+    <a href="/countries">Countries</a>
+    <a href="/cities">Cities</a>
+</section>
+    
+{% endfor %}
 {% endblock content %}

@@ -8,5 +8,5 @@ users_blueprint = Blueprint("users", __name__)
 # INDEX
 @users_blueprint.route("/users")
 def users():
-    humans = user_repository.select_all()
+    users = user_repository.select_all()
     return render_template("users/index.html", users=users)
