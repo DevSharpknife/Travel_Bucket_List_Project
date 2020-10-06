@@ -25,3 +25,8 @@ def create_trip():
     new_trip = Trip(name, age)
     trip_repo.save(new_trip)
     return render_template("/trips")
+
+@trips_blueprint.route("/trips/<id>/delete", methods=["POST"])
+def delete_trip(id):
+    trip_repo.delete(id)
+    return redirect("/trips")

@@ -4,13 +4,13 @@
 THIS IS WHERE YOU CAN ADD CITIES YOU ARE YET TO VISIT
 <hr>
 <section>
-    <form action="/users" method="post">
-        <label for="name">What is your name?</label>
-        <input type="text" name="new_user_name" id="new_user_name" placeholder="Enter Name Here">
-        <label for="age">How long have you been travelling?</label>
-        <input type="number" name="new_user_age" id="new_user_age" placeholder="Enter Age Here">
+    <form action="/cities" method="POST">
+        <label for="name">What city are you hoping to visit?</label>
+        <input type="text" name="new_city_name" id="new_user_name" placeholder="Enter City Here">
+        <label for="age">What country is that in?</label>
+        <input type="text" name="new_city_country" id="new_user_age" placeholder="Enter Country Here">
+        <input type="submit">
     </form>
-    <input type="submit">
 </section>
 
 {% endblock content %}

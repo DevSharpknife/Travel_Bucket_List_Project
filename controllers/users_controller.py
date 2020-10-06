@@ -25,16 +25,22 @@ def create_user():
     users = user_repo.select_all()
     return render_template("users/index.html", users=users)
 
-
-
-
 # EDIT - UPDATE
+@users_blueprint.route("/users/<id>/edit")
+def edit_user(id):
+    user = user_repo.select(id)
+    return render_template("/users/edit.html", user=user)
 
+@users_blueprint.route("/users/<id>", methods=["POST"])
+def update_user(id):
+    name = request.form["updated_user_name"]
+    age = request.form["updated_user_age"]
+    updated_user = User(name, age)
+    user_repo.update(updated_user)
+    return redirect("/users")
 
 # REMOVE - DELETE
-
 @users_blueprint.route("/users/<id>/delete", methods=["POST"])
 def delete_user(id):
     user_repo.delete(id)
-    users = user_repo.select_all()
-    return redirect("/users/index.html", users=users)
+    return redirect("/users")

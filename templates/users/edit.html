@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>GREETINGS TRAVELLER!</h2>
+THIS IS WHERE YOU WILL MAKE CHANGES TO AN EXISTING USER
+<hr>
+<section>
+    <form action="/users/{{ user.id }}" method="POST">
+        <label for="updated_user_name">Tell me again, what is your name, Traveller?</label>
+        <input type="text" name="updated_user_name" id="updated_user_name" value="{{ user.name }}">
+        <label for="updated_user_age">Unhappy with how long you said you have been travelling?</label>
+        <input type="number" name="updated_user_age" id="updated_user_age" value="{{ user.age }}">
+        <input type="submit">
+    </form>
+</section>
+
+{% endblock content %}

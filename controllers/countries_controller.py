@@ -1,14 +1,14 @@
 from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.country import Country
-import repositories.country_repository as country_repository
+import repositories.country_repository as country_repo
 
 countries_blueprint = Blueprint("countries", __name__)
 
 # INDEX
 @countries_blueprint.route("/countries")
 def countries():
-    countries = country_repository.select_all()
+    countries = country_repo.select_all()
     return render_template("countries/index.html", countries=countries)
 
 # NEW - CREATE
@@ -20,6 +20,14 @@ def new_country():
 def create_country():
     name = request.form["new_country_name"]
     new_country = Country(name)
-    country_repository.save(new_country)
-    countries = country_repository.select_all()
+    country_repo.save(new_country)
+    countries = country_repo.select_all()
     return render_template("/countries/index.html", countries=countries)
+
+
+
+
+@countries_blueprint.route("/countries/<id>/delete", methods=["POST"])
+def delete_country(id):
+    country_repo.delete(id)
+    return redirect("/countries")
