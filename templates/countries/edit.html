@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>GREETINGS TRAVELLER!</h2>
+THIS IS WHERE YOU WILL EDIT THE COUNTRIES YOU"D LIKE TO EXPLORE
+<hr>
+<section>
+    <form action="/countries/{{ country.id }}" method="POST">
+        <label for="updated_country_name">Tell me the country you'd like to visit.</label>
+        <input type="text" name="updated_country_name" id="updated_country_name" Value="{{ country.name }}">
+        <input type="submit">
+    </form>
+</section>
+
+{% endblock content %}

@@ -24,8 +24,17 @@ def create_country():
     countries = country_repo.select_all()
     return render_template("/countries/index.html", countries=countries)
 
+@countries_blueprint.route("/countries/<id>/edit")
+def edit_country(id):
+    country = country_repo.select(id)
+    return render_template("/countries/edit.html", country=country)
 
-
+@countries_blueprint.route("/countries/<id>", methods=["POST"])
+def update_user(id):
+    name = request.form["updated_country_name"]
+    updated_country = Country(name, id)
+    country_repo.update(updated_country)
+    return redirect("/countries")
 
 @countries_blueprint.route("/countries/<id>/delete", methods=["POST"])
 def delete_country(id):

@@ -35,7 +35,7 @@ def edit_user(id):
 def update_user(id):
     name = request.form["updated_user_name"]
     age = request.form["updated_user_age"]
-    updated_user = User(name, age)
+    updated_user = User(name, age, id)
     user_repo.update(updated_user)
     return redirect("/users")
 
