@@ -1,14 +1,14 @@
 from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.user import User
-import repositories.user_repository as user_repository
+import repositories.user_repository as user_repo
 
 users_blueprint = Blueprint("users", __name__)
 
 # INDEX
 @users_blueprint.route("/users")
 def users():
-    users = user_repository.select_all()
+    users = user_repo.select_all()
     return render_template("users/index.html", users=users)
 
 # NEW - CREATE
@@ -21,8 +21,8 @@ def create_user():
     name = request.form["new_user_name"]
     age = request.form["new_user_age"]
     new_user = User(name, age)
-    user_repository.save(new_user)
-    users = user_repository.select_all()
+    user_repo.save(new_user)
+    users = user_repo.select_all()
     return render_template("users/index.html", users=users)
 
 
@@ -32,3 +32,9 @@ def create_user():
 
 
 # REMOVE - DELETE
+
+@users_blueprint.route("/users/<id>/delete", methods=["POST"])
+def delete_user(id):
+    user_repo.delete(id)
+    users = user_repo.select_all()
+    return redirect("/users/index.html", users=users)

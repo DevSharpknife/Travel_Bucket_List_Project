@@ -19,7 +19,7 @@ def select_all():
     for row in results:
         user = user_repository.select(row['user_id'])
         city = city_repository.select(row['city_id'])
-        trip = Trip(user, name, city, row['date'], row['duration'], row['review'])
+        trip = Trip(user, row['name'], city, row['date'], row['duration'], row['review'])
         trips.append(trip)
     return trips
 
@@ -30,7 +30,7 @@ def select(id):
     if result is not None:
         user = user_repository.select(result['user_id'])
         city = city_repository.select(result['city_id'])
-        trip = Trip(user, name, city, result['date'], result['duration'], result['review'], result['id'])
+        trip = Trip(user, result['name'], city, result['date'], result['duration'], result['review'], result['id'])
     return trip
 
 def delete_all():

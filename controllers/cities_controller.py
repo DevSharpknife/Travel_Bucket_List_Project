@@ -24,3 +24,5 @@ def create_city():
     new_city = City(name, country)
     city_repo.save(new_city)
     return render_template("/cities")
+
+

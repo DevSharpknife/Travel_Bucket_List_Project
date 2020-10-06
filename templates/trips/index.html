@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+
     THIS IS WHERE THE TRIP DATA WILL BE POPULATED
 
 {% for trip in trips %}
 <section>
     <p>{{ trip.name }}</p>
     <a href="/trips/{{ trip.id }}/edit">Edit Trip</a>
-    <a href="/countries">Countries</a>
-    <a href="/cities">Cities</a>
+    <form action="/trips/{{ trip.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
 </section>
 <br>
-    
+
 {% endfor %}
 {% endblock content %}
