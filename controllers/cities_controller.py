@@ -36,11 +36,10 @@ def edit_city(id):
 @cities_blueprint.route("/cities/<id>", methods=["POST"])
 def update_city(id):
     city_name = request.form["updated_city_name"]
-    country_name = request.form["updated_country_name"]
-    updated_city = City(city_name, country_name)
-    city_repox.update(updated_city)
+    city_to_be_updated = city_repo.select(id)
+    updated_city = City(city_name, city_to_be_updated.country.id, id)
+    city_repo.update(updated_city)
     return redirect("/cities")
-
 
 @cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
 def delete_city(id):
