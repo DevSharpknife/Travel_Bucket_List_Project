@@ -4,9 +4,16 @@
     THIS IS WHERE THE CITY DATA WILL BE POPULATED
 
 {% for city in cities %}
-<section>
-    <p>{{ city.name }}</p>
+<section class = "cities-list">
+    <p class = "city-name">{{ city.name }}</p>
+    {% if city.visited == True %}
+    <p>Visited: &#x2713</p>
+    {% else %}
+    <p>Visited: &#x2717</p>
+    {% endif %}
     <a href="/trips">Trips</a>
+    <br>
+    <br>
     <form action="/cities/{{ city.id }}/delete" method="POST">
         <input type="submit" value="Delete">
     </form>

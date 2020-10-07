@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
+    
     <title>Travel App</title>
 </head>
 <body>
-    <header>
-        <h1><a href="/">TRAVEL PLAN</a></h1>
+    <header class="header">
+        <h1><a href="/">TRYING TO CODE MADE ME NEED TO LEAVE THE COUNTRY</a></h1>
         <nav>
             <ul class="menu">
                 <li>
@@ -42,9 +48,7 @@
             </ul>
         </nav>
     </header>
-    <d class=content>
         {% block content %}
         {% endblock  %}
-    </
 </body>
 </html>
