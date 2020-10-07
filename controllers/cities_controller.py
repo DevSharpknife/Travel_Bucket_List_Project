@@ -45,3 +45,8 @@ def update_city(id):
 def delete_city(id):
     city_repo.delete(id)
     return redirect("/cities")
+
+@cities_blueprint.route("/cities/<id>/visit", methods=["POST"])
+def mark_as_visited(id):
+    city_repo.visit(id)
+    return redirect("/cities")

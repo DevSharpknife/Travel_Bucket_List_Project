@@ -4,20 +4,20 @@
 
 body > header > h1 > a {
     text-decoration: none;
-    color:darkslategray;
+    color:#ce08a3;
     margin: 40vh;
 }
 
 body > header > nav > ul > li {
     list-style: none;
-    color: darkslategray;
+    color: #cece08;
     margin-left: 20px;
 }
 
 .home-list > li > a {
     text-decoration: none;
     list-style: none;
-    color: darkviolet;
+    color: #be484e;
 }
 
 .home-list > li {

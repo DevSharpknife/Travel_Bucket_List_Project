@@ -55,3 +55,8 @@ def find_duplicates(new_city):
         if city.name == new_city.name.capitalize() and city.country.name == new_city.country.name.capitalize():
             return city
     return None
+
+def visit(id):
+    sql = "UPDATE cities SET visited = True WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
