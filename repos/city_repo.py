@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 from models.city import City
 from models.country import Country
-import repositories.country_repository as country_repository
+import repos.country_repo as country_repo
 
 def save(city):
     sql = "INSERT INTO cities ( name, country_id ) VALUES ( %s, %s ) RETURNING id"
@@ -15,7 +15,7 @@ def select_all():
     sql = "SELECT * FROM cities"
     results = run_sql(sql)
     for row in results:
-        country = country_repository.select(row['country_id'])
+        country = country_repo.select(row['country_id'])
         city = City(row['name'], country, row['id'])
         cities.append(city)
     return cities
@@ -25,7 +25,7 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        country = country_repository.select(result['country_id'])
+        country = country_repo.select(result['country_id'])
         city = City(result['name'], country, result['id'])
     return city
 
@@ -38,3 +38,14 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def update(country):
+    sql = "UPDATE cities SET ( name, country ) = %s WHERE id = %s"
+    values = [city.name, city.country.id, city.id]
+    run_sql(sql, values)
+
+def find_duplicates(new_city):
+    cities_list = select_all()
+    for city in cities:
+        if city.name == new_city.name.capitalized():
+            return city
+    return None

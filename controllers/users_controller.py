@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.user import User
-import repositories.user_repository as user_repo
+import repos.user_repo as user_repo
 
 users_blueprint = Blueprint("users", __name__)
 

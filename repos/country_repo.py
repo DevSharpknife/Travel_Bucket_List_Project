@@ -2,11 +2,16 @@ from db.run_sql import run_sql
 from models.country import Country
 
 def save(country):
-    sql = "INSERT INTO countries ( name ) VALUES ( %s ) RETURNING id"
-    values = [country.name]
-    results= run_sql(sql, values)
-    id = results[0]['id']
-    country.id = id
+    duplicate_country = find_duplicates(country)
+    if duplicate_country == None:
+        sql = "INSERT INTO countries ( name ) VALUES ( %s ) RETURNING id"
+        values = [country.name.capitalize()]
+        results= run_sql(sql, values)
+        id = results[0]['id']
+        country.id = id
+        return country
+    else: 
+        return duplicate_country
 
 def select_all():
     countries = []
@@ -38,3 +43,11 @@ def update(country):
     sql = "UPDATE countries SET name = %s WHERE id = %s"
     values = [country.name, country.id]
     run_sql(sql, values)
+
+def find_duplicates(new_country):
+    countries_list = select_all()
+    for country in countries_list:    
+        if country.name == new_country.name.capitalize():
+            return country
+    return None
+

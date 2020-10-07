@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>GREETINGS TRAVELLER!</h2>
+THIS IS WHERE YOU WILL ADD COUNTRIES YOU"D LIKE TO EXPLORE
+<hr>
+<section>
+    <form action="/countries" method="POST">
+        <label for="new_country_name">Tell me the country you'd like to visit.</label>
+        <input type="text" name="new_country_name" id="new_country_name" placeholder="Enter Country Here">
+        <input type="submit">
+    </form>
+</section>
+
+{% endblock content %}
+
+# def find_duplicates(new_city, new_country):
+#     cities_list = 
+
+#     # if city.name == new_city.name and city.country.name == new_city.country.name
+#     #   return city
+
+
+#     # Paris France
+#     # test 1
+#     # Paris France -> no db change
+    
+#     # test 2
+#     # Paris Spain -> new row in city table
+
+#     # test 3
+#     # London England -> new row

@@ -1,7 +1,7 @@
 from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.country import Country
-import repositories.country_repository as country_repo
+import repos.country_repo as country_repo
 
 countries_blueprint = Blueprint("countries", __name__)
 

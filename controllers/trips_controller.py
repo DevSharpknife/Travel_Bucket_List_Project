@@ -1,9 +1,9 @@
 from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.trip import Trip
-import repositories.trip_repository as trip_repo
-import repositories.country_repository as country_repo
-import repositories.city_repository as city_repo
+import repos.trip_repo as trip_repo
+import repos.country_repo as country_repo
+import repos.city_repo as city_repo
 
 trips_blueprint = Blueprint("trips", __name__)
 

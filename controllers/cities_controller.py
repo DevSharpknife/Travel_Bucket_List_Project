@@ -2,8 +2,8 @@ from flask import Blueprint, Flask, render_template, redirect, request
 
 from models.city import City
 from models.country import Country
-import repositories.city_repository as city_repo
-import repositories.country_repository as country_repo
+import repos.city_repo as city_repo
+import repos.country_repo as country_repo
 
 cities_blueprint = Blueprint("cities", __name__)
 
@@ -23,12 +23,21 @@ def create_city():
     name = request.form["new_city_name"]
     country = request.form["new_city_country"]
     new_country = Country(country)
-    country_repo.save(new_country)
-    new_city = City(name, country)
+    persistent_country = country_repo.save(new_country)
+    new_city = City(name, persistent_country)
     city_repo.save(new_city)
     return redirect("/cities")
 
+@cities_blueprint.route("/cities/<id>/edit")
+def edit_city(id):
+    city = city_repo.select(id)
+    return render_template("/cities/edit.html", city=city)
 
+@cities_blueprint.route()
+def update_city(id):
+    city_name = request.form["updated_city_name"]
+    country_name = request.form["updated_country_name"]
+    updated_city = City(city_name, country_name)
 
 
 @cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
