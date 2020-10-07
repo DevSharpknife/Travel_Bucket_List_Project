@@ -4,11 +4,16 @@ from models.country import Country
 import repos.country_repo as country_repo
 
 def save(city):
-    sql = "INSERT INTO cities ( name, country_id ) VALUES ( %s, %s ) RETURNING id"
-    values = [city.name, city.country.id]
-    results = run_sql(sql, values)
-    id = results[0]['id']
-    city.id = id
+    duplicate_city = find_duplicates(city)
+    if duplicate_city == None:
+        sql = "INSERT INTO cities ( name, country_id ) VALUES ( %s, %s ) RETURNING id"
+        values = [city.name.capitalize(), city.country.id]
+        results = run_sql(sql, values)
+        id = results[0]['id']
+        city.id = id
+        return city
+    else:
+        return duplicate_city
 
 def select_all():
     cities = []
@@ -45,7 +50,7 @@ def update(country):
 
 def find_duplicates(new_city):
     cities_list = select_all()
-    for city in cities:
-        if city.name == new_city.name.capitalized():
+    for city in cities_list:
+        if city.name == new_city.name.capitalize() and city.country.name == new_city.country.name.capitalize():
             return city
     return None

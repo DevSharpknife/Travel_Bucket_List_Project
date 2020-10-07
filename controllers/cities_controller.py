@@ -33,11 +33,13 @@ def edit_city(id):
     city = city_repo.select(id)
     return render_template("/cities/edit.html", city=city)
 
-@cities_blueprint.route()
+@cities_blueprint.route("/cities/<id>", methods=["POST"])
 def update_city(id):
     city_name = request.form["updated_city_name"]
     country_name = request.form["updated_country_name"]
     updated_city = City(city_name, country_name)
+    city_repox.update(updated_city)
+    return redirect("/cities")
 
 
 @cities_blueprint.route("/cities/<id>/delete", methods=["POST"])
