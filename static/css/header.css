@@ -1,0 +1,28 @@
+.header {
+    background-color: #480e63;
+}
+
+body > header > h1 > a {
+    text-decoration: none;
+    color:darkslategray;
+    margin: 40vh;
+}
+
+body > header > nav > ul > li {
+    list-style: none;
+    color: darkslategray;
+}
+
+.home-list > li > a {
+    text-decoration: none;
+    list-style: none;
+    color: darkviolet;
+}
+
+.home-list > li {
+    list-style: none;
+}
+
+.nav-list > h2 {
+    display: inline-flex;
+}

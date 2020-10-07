@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
@@ -14,33 +15,33 @@
 </head>
 <body>
     <header class="header">
-        <h1><a href="/">TRYING TO CODE MADE ME NEED TO LEAVE THE COUNTRY</a></h1>
-        <nav>
-            <ul class="menu">
-                <li>
-                    GREETINGS TRAVELLER
-                    <ul>
+        <h1 class="fat-header"><a class="company-link" href="/">TRYING TO CODE MADE ME NEED TO LEAVE THE COUNTRY</a></h1>
+        <nav class="header-nav">
+            <ul class="master-nav-list">
+                <li class="nav-list">
+                    <h2>GREETINGS TRAVELLER</h2>
+                    <ul class="home-list">
                         <li><a href="/users">Seasoned Travellers</a></li>
                         <li><a href="/users/new">A Single Step</a></li>
                     </ul>
                 </li>
-                <li>
-                    COUNTRYMAN
-                    <ul>
+                <li class="nav-list">
+                    <h2>COUNTRYMAN</h2>
+                    <ul class="home-list">
                         <li><a href="/countries">Travelog</a></li>
                         <li><a href="/countries/new">Places To Go</a></li>
                     </ul>
                 </li>
-                <li>
-                    CITIES OF GOLD
-                    <ul>
+                <li class="nav-list">
+                    <h2>CITIES OF GOLD</h2>
+                    <ul class="home-list">
                         <li><a href="/cities">Road to El Dorado</a></li>
                         <li><a href="/cities/new">Destinations</a></li>
                     </ul>
                 </li>
-                <li>
-                    TRIPS
-                    <ul>
+                <li class="nav-list">
+                    <h2>TRIPS</h2>
+                    <ul class="home-list">
                         <li><a href="/trips">Down The Rabbit Hole</a></li>
                         <li><a href="/trips/new">LSD</a></li>
                     </ul>
@@ -50,5 +51,8 @@
     </header>
         {% block content %}
         {% endblock  %}
+    <footer>
+
+    </footer>
 </body>
 </html>
