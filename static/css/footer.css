@@ -1,0 +1,6 @@
+body > footer {
+    background-color: blueviolet;
+    color: yellow;
+    padding: 30px;
+    text-align: center;
+}

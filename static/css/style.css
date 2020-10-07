@@ -1,5 +1,19 @@
-body > header {
+body {
     font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    text-align: center;
 }
 
+body > main {
+    height: 100vh;
+    margin: 60px;
+}
 
+.large-image {
+    width: 70vw;
+    height: 70vh;
+    justify-content: center;
+    margin-right: 60px;
+}

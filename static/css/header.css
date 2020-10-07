@@ -11,6 +11,7 @@ body > header > h1 > a {
 body > header > nav > ul > li {
     list-style: none;
     color: darkslategray;
+    margin-left: 20px;
 }
 
 .home-list > li > a {
@@ -21,8 +22,22 @@ body > header > nav > ul > li {
 
 .home-list > li {
     list-style: none;
+    text-align: center;
+}
+
+.master-nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.header-nav {
+    padding-bottom: 30px;
+    
 }
 
 .nav-list > h2 {
-    display: inline-flex;
+    margin-left: 35px;
 }
